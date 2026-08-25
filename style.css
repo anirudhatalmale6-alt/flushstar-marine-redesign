@@ -101,8 +101,6 @@ section{padding:104px 0;position:relative}
 .sec-head p{color:var(--mute);font-size:18px;margin:20px 0 0}
 
 /* ---------- problem ---------- */
-.problem .split{align-items:start}
-.problem .figure{position:sticky;top:104px}
 .problem{background:
   radial-gradient(ellipse 70% 90% at 88% 50%,rgba(196,86,47,.14),transparent 62%),
   linear-gradient(180deg,var(--hull),var(--abyss))}
