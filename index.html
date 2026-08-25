@@ -438,15 +438,12 @@ document.querySelectorAll('.rv, .sec-head').forEach(function(el){io.observe(el);
 
 var REDUCED=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ---- scroll progress + hero parallax ---- */
-var prog=document.getElementById('progress'), heroEl=document.querySelector('.hero'), ticking=false;
+/* ---- scroll progress ---- */
+var prog=document.getElementById('progress'), ticking=false;
 function onScroll(){
   var st=window.pageYOffset||document.documentElement.scrollTop;
   var max=document.documentElement.scrollHeight-window.innerHeight;
   prog.style.width=(max>0?(st/max)*100:0)+'%';
-  if(!REDUCED&&heroEl&&st<window.innerHeight*1.2){
-    heroEl.style.setProperty('--par',(st*0.16)+'px');
-  }
   ticking=false;
 }
 window.addEventListener('scroll',function(){
