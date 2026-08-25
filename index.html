@@ -31,6 +31,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="progress" id="progress"></div>
 <div class="grid-bg"></div><div class="noise"></div>
 
 <div class="ticker">
@@ -65,10 +66,21 @@
 <!-- HERO -->
 <section class="hero" style="padding:0">
   <div class="hero-img"><img src="img/manifold.jpg" alt="FlushStar Quantum 25 manifold connected to a bank of outboard engines"></div>
+  <svg class="flowlines" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
+    <defs><linearGradient id="fl" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2E9BFF" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#6FCBFF"/>
+      <stop offset="100%" stop-color="#2E9BFF" stop-opacity="0"/></linearGradient></defs>
+    <path d="M-50 130 C 300 90, 620 210, 1250 120"/>
+    <path d="M-50 300 C 340 250, 700 380, 1250 290"/>
+    <path d="M-50 470 C 280 430, 660 560, 1250 460"/>
+    <path d="M-50 620 C 360 580, 720 700, 1250 610"/>
+    <path d="M-50 750 C 300 700, 640 820, 1250 740"/>
+  </svg>
   <div class="wrap">
     <div class="hero-in">
       <span class="eyebrow mono">Quantum 25 &nbsp;/&nbsp; Automatic Marine Flushing System</span>
-      <h1>Salt never stops working.<br><em>Neither should you.</em></h1>
+      <h1 id="h1">Salt never stops working.<br><em>Neither should you.</em></h1>
       <p class="lede">The Quantum 25 clears salt, sand and mineral buildup from your engine's full cooling
         circuit in one push-button cycle. No hose-holding. No ear muffs. No guesswork.</p>
       <div class="hero-cta">
@@ -83,16 +95,36 @@
       </div>
     </div>
   </div>
+  <div class="cue"><span>Scroll</span><i></i></div>
+</section>
+
+<!-- KINETIC BAND -->
+<section class="kinetic" aria-hidden="true">
+  <div class="kin-row kin-a">
+    <b>Salt never sleeps</b><b class="kin-hot">Flush it</b><b>Salt never sleeps</b><b class="kin-hot">Flush it</b>
+    <b>Salt never sleeps</b><b class="kin-hot">Flush it</b><b>Salt never sleeps</b><b class="kin-hot">Flush it</b>
+  </div>
+  <div class="kin-row kin-b" style="border-top:1px solid var(--line);margin-top:-6px">
+    <b class="kin-hot">One button</b><b>Six engines</b><b class="kin-hot">One button</b><b>Six engines</b>
+    <b class="kin-hot">One button</b><b>Six engines</b><b class="kin-hot">One button</b><b>Six engines</b>
+  </div>
 </section>
 
 <!-- PROBLEM -->
 <section class="problem" id="problem">
   <div class="wrap">
     <div class="split">
-      <figure class="figure rv">
+      <figure class="figure rv" id="corrFig">
         <span class="corner tl"></span><span class="corner br"></span>
         <img src="img/unit-corrosion.jpg" alt="A salt-encrusted thermostat housing held beside a FlushStar unit">
-        <figcaption>Salt buildup pulled from an unflushed cooling passage</figcaption>
+        <button class="hot" style="left:68%;top:17%" data-i="0" aria-expanded="false"
+                aria-label="What salt buildup looks like"><i></i></button>
+        <button class="hot" style="left:60%;top:33%" data-i="1" aria-expanded="false"
+                aria-label="A blocked cooling passage"><i></i></button>
+        <button class="hot" style="left:34%;top:58%" data-i="2" aria-expanded="false"
+                aria-label="The FlushStar manifold"><i></i></button>
+        <div class="hot-note" id="hotNote" style="left:5%;top:6%"></div>
+        <figcaption id="corrCap">Salt from an unflushed passage &nbsp;&middot;&nbsp; tap a marker</figcaption>
       </figure>
       <div class="rv">
         <div class="sec-head" style="margin-bottom:38px">
@@ -130,7 +162,7 @@
       <p>The boat can be in the water or on the trailer. The engine never has to run &mdash;
          which means no noise, no emissions and no fuel burned to protect your motors.</p>
     </div>
-    <div class="steps rv">
+    <div class="steps stagger rv">
       <div class="step">
         <span class="num">01</span>
         <h3>Connect freshwater</h3>
@@ -149,6 +181,18 @@
         <p>The cycle runs unattended and shuts itself down. Diagnostics log the runtime and the
            completed cycle count so you have a record, not a hope.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stat-grid stagger rv">
+      <div class="stat"><b data-count="38" data-suffix="">0</b><small>Years building flush systems</small></div>
+      <div class="stat"><b data-count="6" data-suffix="">0</b><small>Engines on one cycle</small></div>
+      <div class="stat"><b data-count="1" data-suffix="">0</b><small>Button to start it</small></div>
+      <div class="stat"><b data-count="0" data-suffix="">0</b><small>Emissions or fuel burned</small></div>
     </div>
   </div>
 </section>
@@ -216,7 +260,7 @@
       <span class="mono">The unit</span>
       <h2>Flush your motors, not your time.</h2>
     </div>
-    <div class="feat-grid rv">
+    <div class="feat-grid stagger rv">
       <div class="feat">
         <svg viewBox="0 0 24 24"><path d="M12 2v6M12 22a8 8 0 0 0 8-8 8 8 0 0 0-3-6.2M7 7.8A8 8 0 0 0 4 14a8 8 0 0 0 8 8"/></svg>
         <h3>One-touch startup</h3><p>Press once. The full cycle runs start to finish without you.</p>
@@ -304,7 +348,7 @@
       <h2>Real support. A straight guarantee.</h2>
       <p>Equipment built to handle saltwater, backed by people who pick up the phone.</p>
     </div>
-    <div class="trust rv">
+    <div class="trust stagger rv">
       <div class="tcard">
         <span class="mono">Customer support</span>
         <h3>Real people, real help</h3>
@@ -390,7 +434,107 @@ nl.addEventListener('click',function(e){if(e.target.tagName==='A')nl.classList.r
 var io=new IntersectionObserver(function(es){
   es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
 },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
-document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+document.querySelectorAll('.rv, .sec-head').forEach(function(el){io.observe(el);});
+
+var REDUCED=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---- scroll progress + hero parallax ---- */
+var prog=document.getElementById('progress'), heroEl=document.querySelector('.hero'), ticking=false;
+function onScroll(){
+  var st=window.pageYOffset||document.documentElement.scrollTop;
+  var max=document.documentElement.scrollHeight-window.innerHeight;
+  prog.style.width=(max>0?(st/max)*100:0)+'%';
+  if(!REDUCED&&heroEl&&st<window.innerHeight*1.2){
+    heroEl.style.setProperty('--par',(st*0.16)+'px');
+  }
+  ticking=false;
+}
+window.addEventListener('scroll',function(){
+  if(!ticking){ticking=true;requestAnimationFrame(onScroll);}
+},{passive:true});
+onScroll();
+
+/* ---- headline word-by-word reveal ---- */
+(function(){
+  var h=document.getElementById('h1'); if(!h||REDUCED)return;
+  var i=0;
+  function wrap(node){
+    var out=[];
+    [].slice.call(node.childNodes).forEach(function(n){
+      if(n.nodeType===3){
+        var frag=document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function(t){
+          if(!t.trim()){frag.appendChild(document.createTextNode(t));return;}
+          var s=document.createElement('span');
+          s.className='w'; s.textContent=t;
+          s.style.animationDelay=(0.12+i*0.055).toFixed(3)+'s'; i++;
+          frag.appendChild(s);
+        });
+        out.push([n,frag]);
+      } else if(n.nodeType===1 && n.tagName!=='BR'){ wrap(n); }
+    });
+    out.forEach(function(pair){node.replaceChild(pair[1],pair[0]);});
+  }
+  wrap(h);
+})();
+
+/* ---- count-up stats ---- */
+var cio=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(!e.isIntersecting)return;
+    cio.unobserve(e.target);
+    var b=e.target, target=parseInt(b.dataset.count,10), t0=null, DUR=1250;
+    if(REDUCED||target===0){b.textContent=target;return;}
+    function step(ts){
+      if(!t0)t0=ts;
+      var p=Math.min((ts-t0)/DUR,1);
+      var eased=1-Math.pow(1-p,3);
+      b.textContent=Math.round(target*eased);
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+},{threshold:.6});
+document.querySelectorAll('.stat b[data-count]').forEach(function(b){cio.observe(b);});
+
+/* ---- corrosion hotspots ---- */
+(function(){
+  var NOTES=[
+    ['Salt buildup','This is what comes out of a cooling passage that never gets flushed. Every trip in salt water adds another layer.'],
+    ['A blocked passage','Once the mineral crust closes the passage, coolant stops moving and the powerhead starts running hot.'],
+    ['The fix','The Quantum 25 pushes fresh water through that entire circuit on one push-button cycle, before any of it can set.']
+  ];
+  var note=document.getElementById('hotNote');
+  var hots=[].slice.call(document.querySelectorAll('#corrFig .hot'));
+  if(!note||!hots.length)return;
+  var openIdx=-1;
+  function close(){
+    openIdx=-1; note.classList.remove('show');
+    hots.forEach(function(h){h.setAttribute('aria-expanded','false');});
+  }
+  hots.forEach(function(h){
+    h.addEventListener('click',function(ev){
+      ev.stopPropagation();
+      var i=+h.dataset.i;
+      if(openIdx===i){close();return;}
+      close(); openIdx=i;
+      note.innerHTML='<b>'+NOTES[i][0]+'</b>'+NOTES[i][1];
+      note.classList.add('show');
+      h.setAttribute('aria-expanded','true');
+    });
+  });
+  document.addEventListener('click',function(){if(openIdx>-1)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+})();
+
+/* ---- feature card cursor glow ---- */
+document.querySelectorAll('.feat').forEach(function(f){
+  f.addEventListener('mousemove',function(e){
+    var r=f.getBoundingClientRect();
+    f.style.setProperty('--mx',(e.clientX-r.left)+'px');
+    f.style.setProperty('--my',(e.clientY-r.top)+'px');
+  });
+});
 
 /* ---- engine configurator ---- */
 var MAX=6, count=4, running=false;
@@ -477,6 +621,22 @@ document.getElementById('runBtn').addEventListener('click',function(){
 });
 
 buildDial();buildDiagram();
+
+/* auto-demo the cycle the first time the panel scrolls into view */
+(function(){
+  var panel=document.querySelector('#system .panel');
+  if(!panel||REDUCED)return;
+  var once=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      once.unobserve(e.target);
+      setTimeout(function(){
+        if(!running)document.getElementById('runBtn').click();
+      },700);
+    });
+  },{threshold:.45});
+  once.observe(panel);
+})();
 </script>
 </body>
 </html>
